@@ -7,7 +7,7 @@ import MeetingCard from "@/core/meeting/MeetingCard";
 import MilestoneCard from "@/core/milestone/MilestoneCard";
 
 import UploadWindow from "@/core/features/upload/UploadWindow";
-
+import { mockMeetings } from "@/data/mockMeeting";
 export default function UnityOSPage() {
   return (
     <OSLayout>
@@ -24,7 +24,7 @@ export default function UnityOSPage() {
 
         <MilestoneCard />
 
-        <MeetingCard />
+        <MeetingCard meeting={mockMeetings[0]} />
 
         <VisionCard />
 
