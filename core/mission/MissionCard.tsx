@@ -1,9 +1,15 @@
 import Card from "../ui/Card";
 import Button from "../ui/Button";
 
-import { mockMission } from "@/data/mockMission";
+import { journeyContext } from "../journey/JourneyProvider";
+import { mockMission } from "@/data/mock/mockMission";
 
 export default function MissionCard() {
+  const { decision, recommendation } = journeyContext;
+
+  const progress =
+    (mockMission.completedSteps / mockMission.totalSteps) * 100;
+
   return (
     <Card className="space-y-8">
       <div>
@@ -12,11 +18,11 @@ export default function MissionCard() {
         </p>
 
         <h2 className="mt-2 text-3xl font-bold text-white">
-          {mockMission.title}
+          {decision.title}
         </h2>
 
         <p className="mt-3 text-gray-400">
-          {mockMission.description}
+          {decision.description}
         </p>
       </div>
 
@@ -35,7 +41,7 @@ export default function MissionCard() {
           <div
             className="h-full rounded-full bg-cyan-400 transition-all duration-700"
             style={{
-              width: `${(mockMission.completedSteps / mockMission.totalSteps) * 100}%`,
+              width: `${progress}%`,
             }}
           />
         </div>
@@ -71,7 +77,7 @@ export default function MissionCard() {
           </span>
 
           <span className="font-semibold text-white">
-            {mockMission.priority}
+            {recommendation.priority}
           </span>
         </div>
 
@@ -81,33 +87,23 @@ export default function MissionCard() {
           </span>
 
           <span className="font-semibold text-white">
-            {mockMission.estimatedTime}
+            {recommendation.estimatedMinutes} min
           </span>
         </div>
 
         <div className="flex justify-between">
           <span className="text-gray-400">
-            Guida consigliata
+            XP
           </span>
 
           <span className="font-semibold text-cyan-400">
-            {mockMission.guide}
-          </span>
-        </div>
-
-        <div className="flex justify-between">
-          <span className="text-gray-400">
-            Ricompensa
-          </span>
-
-          <span className="font-semibold text-cyan-400">
-            {mockMission.reward}
+            +{recommendation.xpReward}
           </span>
         </div>
       </div>
 
       <Button className="w-full">
-        {mockMission.action}
+        {recommendation.cta}
       </Button>
     </Card>
   );

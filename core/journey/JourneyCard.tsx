@@ -1,17 +1,13 @@
 import Card from "../ui/Card";
 import Button from "../ui/Button";
 
-interface JourneyCardProps {
-  title: string;
-  description: string;
-  progress: number;
-}
+import { journeyContext } from "./JourneyProvider";
 
-export default function JourneyCard({
-  title,
-  description,
-  progress,
-}: JourneyCardProps) {
+export default function JourneyCard() {
+  const { journey, decision, recommendation } = journeyContext;
+
+  const progress = journey.progress;
+
   return (
     <Card className="space-y-6">
       <div>
@@ -20,17 +16,19 @@ export default function JourneyCard({
         </p>
 
         <h2 className="mt-2 text-3xl font-bold text-white">
-          {title}
+          {decision.title}
         </h2>
 
         <p className="mt-3 text-gray-400">
-          {description}
+          {decision.description}
         </p>
       </div>
 
       <div>
         <div className="mb-2 flex items-center justify-between text-sm">
-          <span className="text-gray-400">Progressione</span>
+          <span className="text-gray-400">
+            Progressione
+          </span>
 
           <span className="font-semibold text-cyan-400">
             {progress}%
@@ -47,8 +45,18 @@ export default function JourneyCard({
         </div>
       </div>
 
+      <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-4">
+        <p className="text-xs uppercase tracking-widest text-cyan-400">
+          Prossimo passo
+        </p>
+
+        <p className="mt-2 text-white">
+          {journey.nextStep}
+        </p>
+      </div>
+
       <Button className="w-full">
-        Continua il percorso
+        {recommendation.cta}
       </Button>
     </Card>
   );

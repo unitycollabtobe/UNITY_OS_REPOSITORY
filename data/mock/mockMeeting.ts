@@ -9,7 +9,9 @@ export const mockMeetings: Meeting[] = [
     description:
       "Prima di entrare in Unity vogliamo conoscerti. Prenota il tuo primo Mini Meeting.",
 
-    type: "online",
+    type: "mini",
+
+    mode: "online",
 
     status: "scheduled",
 
@@ -27,18 +29,22 @@ export const mockMeetings: Meeting[] = [
 
     remainingSeats: 12,
 
+    locked: false,
+
     meetingUrl: "https://meeting.unity.local",
   },
 
   {
     id: "MEET-002",
 
-    title: "Mini Meeting Conoscitivo",
+    title: "Meeting Bonus",
 
     description:
-      "Incontra il relatore dal vivo e scopri come funziona Unity.",
+      "Partecipa al Meeting Bonus dopo aver completato il Mini Meeting.",
 
-    type: "presence",
+    type: "bonus",
+
+    mode: "presence",
 
     status: "scheduled",
 
@@ -55,6 +61,8 @@ export const mockMeetings: Meeting[] = [
     bookedParticipants: 10,
 
     remainingSeats: 5,
+
+    locked: true,
 
     address: "Via Luciano Lama 80, Cesena",
 

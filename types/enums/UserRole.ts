@@ -1,0 +1,6 @@
+export enum UserRole {
+  GUEST = "GUEST",
+  COLLABORATOR = "COLLABORATOR",
+  SPEAKER = "SPEAKER",
+  ADMIN = "ADMIN",
+}

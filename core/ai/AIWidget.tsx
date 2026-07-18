@@ -1,7 +1,7 @@
 import Card from "../ui/Card";
 import Button from "../ui/Button";
 
-import { mockAI } from "@/data/mockAI";
+import { mockAI } from "@/data/mock/mockAI";
 
 export default function AIWidget() {
   return (

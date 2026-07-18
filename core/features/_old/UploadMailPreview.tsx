@@ -1,7 +1,7 @@
 import Card from "@/core/ui/Card";
 
 import { SYSTEM } from "@/config/system";
-import { mockProfile } from "@/data/mockProfile";
+import { mockProfile } from "@/data/mock/mockProfile";
 
 export default function UploadMailPreview() {
   return (

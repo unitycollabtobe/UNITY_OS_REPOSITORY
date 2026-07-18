@@ -1,6 +1,6 @@
 import Card from "../ui/Card";
 
-import { mockVision } from "@/data/mockVision";
+import { mockVision } from "@/data/mock/mockVision";
 
 export default function VisionCard() {
   return (

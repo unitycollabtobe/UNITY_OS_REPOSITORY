@@ -1,4 +1,4 @@
-import { mockUploadFiles } from "@/data/mockUploadFiles";
+import { mockUploadFiles } from "@/data/mock/mockUploadFiles";
 
 export default function UploadFileList() {
   return (

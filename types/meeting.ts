@@ -1,12 +1,29 @@
-export type MeetingType = "online" | "presence";
+// ===========================================
+// UNITY OS
+// Meeting Model
+// Version: 1.1
+// ===========================================
+
+export type MeetingType =
+  | "mini"
+  | "bonus"
+  | "training"
+  | "event"
+  | "personal";
+
+export type MeetingMode =
+  | "online"
+  | "presence";
 
 export type MeetingStatus =
   | "scheduled"
   | "live"
   | "completed"
+  | "cancelled"
   | "full";
 
 export interface Meeting {
+
   id: string;
 
   title: string;
@@ -14,6 +31,8 @@ export interface Meeting {
   description: string;
 
   type: MeetingType;
+
+  mode: MeetingMode;
 
   status: MeetingStatus;
 
@@ -29,6 +48,10 @@ export interface Meeting {
 
   bookedParticipants: number;
 
+  remainingSeats: number;
+
+  locked: boolean;
+
   address?: string;
 
   mapsUrl?: string;
@@ -37,6 +60,8 @@ export interface Meeting {
 
   meetingUrl?: string;
 
-  remainingSeats: number;
+  createdAt: string;
+
+  updatedAt: string;
 
 }

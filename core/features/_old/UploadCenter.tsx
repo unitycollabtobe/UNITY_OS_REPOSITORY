@@ -1,7 +1,7 @@
 import Card from "@/core/ui/Card";
 import Button from "@/core/ui/Button";
 
-import { mockUpload } from "@/data/mockUpload";
+import { mockUpload } from "@/data/mock/mockUpload";
 
 export default function UploadCenter() {
   return (

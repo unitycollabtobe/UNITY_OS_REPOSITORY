@@ -12,11 +12,11 @@ export default function MeetingCard({
 }: MeetingCardProps) {
   return (
     <Card className="space-y-8 p-8">
-
       <div className="space-y-3">
-
         <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-400">
-          IL PRIMO PASSO
+          {meeting.type === "bonus"
+            ? "MEETING BONUS"
+            : "MINI MEETING"}
         </p>
 
         <h2 className="text-4xl font-bold text-white">
@@ -26,29 +26,23 @@ export default function MeetingCard({
         <p className="text-lg leading-8 text-gray-300">
           {meeting.description}
         </p>
-
       </div>
 
       <div className="grid gap-6 rounded-3xl border border-cyan-500/20 bg-cyan-500/5 p-6 md:grid-cols-2">
-
         <div className="space-y-5">
+          <div>
+            <p className="text-sm uppercase tracking-widest text-gray-400">
+              Modalità
+            </p>
 
-          <div className="flex items-center justify-between">
-
-            <span className="inline-flex items-center rounded-full bg-cyan-500 px-4 py-2 text-sm font-bold uppercase text-black">
-              {meeting.type === "online"
-                ? "🎥 Online"
-                : "📍 In presenza"}
-            </span>
-
-            <span className="rounded-full border border-cyan-500/30 px-4 py-2 text-sm font-semibold text-cyan-300">
-              {meeting.remainingSeats} posti rimasti
-            </span>
-
+            <h3 className="mt-1 text-2xl font-bold text-white">
+              {meeting.mode === "online"
+                ? "Online"
+                : "In Presenza"}
+            </h3>
           </div>
 
           <div>
-
             <p className="text-sm uppercase tracking-widest text-gray-400">
               Data
             </p>
@@ -56,27 +50,21 @@ export default function MeetingCard({
             <h3 className="mt-1 text-2xl font-bold text-white">
               {meeting.date}
             </h3>
-
           </div>
 
           <div>
-
             <p className="text-sm uppercase tracking-widest text-gray-400">
-              Ora
+              Orario
             </p>
 
-            <h3 className="mt-1 text-4xl font-extrabold text-cyan-400">
+            <h3 className="mt-1 text-2xl font-bold text-white">
               {meeting.time}
             </h3>
-
           </div>
-
         </div>
 
         <div className="space-y-5">
-
           <div>
-
             <p className="text-sm uppercase tracking-widest text-gray-400">
               Relatore
             </p>
@@ -84,41 +72,28 @@ export default function MeetingCard({
             <h3 className="mt-1 text-2xl font-bold text-white">
               {meeting.speaker}
             </h3>
-
           </div>
 
           <div>
-
             <p className="text-sm uppercase tracking-widest text-gray-400">
-              Posti occupati
+              Posti disponibili
             </p>
 
-            <h3 className="mt-1 text-2xl font-bold text-white">
-              {meeting.bookedParticipants} / {meeting.maxParticipants}
+            <h3 className="mt-1 text-2xl font-bold text-cyan-400">
+              {meeting.remainingSeats}
             </h3>
-
           </div>
-
-          <div>
-
-            <p className="text-sm uppercase tracking-widest text-gray-400">
-              Durata
-            </p>
-
-            <h3 className="mt-1 text-2xl font-bold text-white">
-              {meeting.duration} minuti
-            </h3>
-
-          </div>
-
         </div>
-
       </div>
 
-      <Button className="w-full">
-        Vedi disponibilità
+      <Button
+        className="w-full"
+        disabled={meeting.locked}
+      >
+        {meeting.locked
+          ? "Completa prima un Mini Meeting"
+          : "Prenota il Meeting"}
       </Button>
-
     </Card>
   );
 }

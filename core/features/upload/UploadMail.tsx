@@ -1,5 +1,5 @@
 import { SYSTEM } from "@/config/system";
-import { mockProfile } from "@/data/mockProfile";
+import { mockProfile } from "@/data/mock/mockProfile";
 
 export default function UploadMail() {
   return (

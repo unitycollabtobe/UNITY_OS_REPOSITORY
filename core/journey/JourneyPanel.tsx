@@ -1,9 +1,11 @@
 import Card from "../ui/Card";
 import Button from "../ui/Button";
 
-import { mockUser } from "@/data/mockUser";
+import { journeyContext } from "../journey/JourneyProvider";
 
 export default function JourneyPanel() {
+  const { profile, journey, decision, recommendation } = journeyContext;
+
   return (
     <Card className="space-y-8">
       <div>
@@ -12,11 +14,11 @@ export default function JourneyPanel() {
         </p>
 
         <h2 className="mt-2 text-4xl font-bold text-white">
-          {mockUser.path.name}
+          {decision.title}
         </h2>
 
         <p className="mt-2 text-gray-400">
-          Versione {mockUser.path.version} • Stato {mockUser.path.status}
+          {decision.description}
         </p>
 
         <div className="mt-6 flex items-center justify-between rounded-2xl border border-cyan-500/20 bg-cyan-500/5 px-5 py-4">
@@ -26,7 +28,7 @@ export default function JourneyPanel() {
             </p>
 
             <p className="mt-1 text-lg font-semibold text-white">
-              {mockUser.firstName} {mockUser.lastName}
+              {profile.firstName} {profile.lastName}
             </p>
           </div>
 
@@ -36,7 +38,7 @@ export default function JourneyPanel() {
             </p>
 
             <p className="mt-1 font-semibold text-white">
-              {mockUser.role}
+              {profile.role}
             </p>
           </div>
         </div>
@@ -49,7 +51,7 @@ export default function JourneyPanel() {
           </span>
 
           <span className="font-semibold text-cyan-400">
-            {mockUser.progress}%
+            {journey.progress}%
           </span>
         </div>
 
@@ -57,7 +59,7 @@ export default function JourneyPanel() {
           <div
             className="h-full rounded-full bg-cyan-400 transition-all duration-700"
             style={{
-              width: `${mockUser.progress}%`,
+              width: `${journey.progress}%`,
             }}
           />
         </div>
@@ -66,37 +68,37 @@ export default function JourneyPanel() {
       <div className="space-y-5">
         <div>
           <p className="text-xs uppercase tracking-widest text-gray-500">
-            Fase attuale
+            Percorso
           </p>
 
           <p className="mt-1 text-lg font-semibold text-white">
-            {mockUser.path.currentPhase}
+            {journey.path}
           </p>
         </div>
 
         <div>
           <p className="text-xs uppercase tracking-widest text-gray-500">
-            Prossima Missione
+            Prossimo Passo
           </p>
 
           <p className="mt-1 text-lg font-semibold text-white">
-            {mockUser.nextMission.title}
+            {journey.nextStep}
           </p>
         </div>
 
         <div>
           <p className="text-xs uppercase tracking-widest text-gray-500">
-            Prossimo Traguardo
+            Tempo stimato
           </p>
 
-          <p className="mt-1 text-lg font-semibold text-white">
-            {mockUser.nextMilestone.title}
+          <p className="mt-1 text-lg font-semibold text-cyan-400">
+            {recommendation.estimatedMinutes} minuti
           </p>
         </div>
       </div>
 
       <Button className="w-full">
-        Continua il percorso
+        {recommendation.cta}
       </Button>
     </Card>
   );
