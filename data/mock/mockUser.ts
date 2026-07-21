@@ -1,37 +1,32 @@
-export const mockUser = {
+// ===========================================
+// UNITY OS
+// Mock User
+// Version: 2.0
+// ===========================================
+
+import { User } from "@/types/user/user";
+import { AccountStatus, UserRole } from "@/types/enums";
+
+export const mockUser: User = {
   id: "USR-0001",
+
+  unityCode: "UNI-0001",
 
   firstName: "Simone",
 
   lastName: "Adamo",
 
-  role: "Collaboratore",
+  email: "simone@example.com",
 
   avatar: "",
 
-  progress: 18,
+  role: UserRole.COLLABORATOR,
 
-  path: {
-    id: "PATH-001",
+  status: AccountStatus.ACTIVE,
 
-    name: "Identity",
+  sponsorId: undefined,
 
-    version: "1.0",
+  createdAt: new Date(),
 
-    status: "Attivo",
-
-    currentPhase: "Scopri Unity",
-  },
-
-  nextMission: {
-    id: "MIS-001",
-
-    title: "Carica la tua prima utenza",
-  },
-
-  nextMilestone: {
-    id: "TRG-001",
-
-    title: "Prime 8 utenze",
-  },
+  updatedAt: new Date(),
 };

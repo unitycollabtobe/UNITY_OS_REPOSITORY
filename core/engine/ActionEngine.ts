@@ -7,7 +7,7 @@
 import { actions } from "@/data/static/actions";
 import { userActions } from "@/data/static/userActions";
 
-import { UnityAction } from "@/types/action";
+import { UnityAction } from "@/types/journey/action";
 
 import { BaseEngine } from "./BaseEngine";
 

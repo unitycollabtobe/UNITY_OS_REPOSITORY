@@ -1,7 +1,7 @@
 import Card from "../ui/Card";
 import Button from "../ui/Button";
 
-import { Meeting } from "@/types/meeting";
+import { Meeting } from "@/types/meeting/meeting";
 
 interface MeetingCardProps {
   meeting: Meeting;
@@ -66,33 +66,28 @@ export default function MeetingCard({
         <div className="space-y-5">
           <div>
             <p className="text-sm uppercase tracking-widest text-gray-400">
-              Relatore
+              Durata
             </p>
 
             <h3 className="mt-1 text-2xl font-bold text-white">
-              {meeting.speaker}
+              {meeting.duration} minuti
             </h3>
           </div>
 
           <div>
             <p className="text-sm uppercase tracking-widest text-gray-400">
-              Posti disponibili
+              Partecipanti massimi
             </p>
 
             <h3 className="mt-1 text-2xl font-bold text-cyan-400">
-              {meeting.remainingSeats}
+              {meeting.maxParticipants}
             </h3>
           </div>
         </div>
       </div>
 
-      <Button
-        className="w-full"
-        disabled={meeting.locked}
-      >
-        {meeting.locked
-          ? "Completa prima un Mini Meeting"
-          : "Prenota il Meeting"}
+      <Button className="w-full">
+        Prenota il Meeting
       </Button>
     </Card>
   );

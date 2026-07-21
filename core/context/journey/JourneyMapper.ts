@@ -2,7 +2,7 @@
  * ==========================================
  * UNITY OS
  * Journey Mapper
- * Version: 1.0
+ * Version: 2.0
  * ==========================================
  */
 
@@ -18,11 +18,6 @@ export class JourneyMapper {
       currentMissionId: mockMission.id,
 
       currentMilestoneId: null,
-
-      nextStep:
-        mockMission.steps.find((step) => !step.completed)?.title ?? "",
-
-      progress: mockMission.progress,
     };
   }
 }

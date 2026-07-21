@@ -7,9 +7,9 @@
 import { missions } from "@/data/static/missions";
 import { userMissions } from "@/data/static/userMissions";
 
-import { Mission } from "@/types/mission";
-import { UserMission } from "@/types/userMission";
-import { UnityAction } from "@/types/action";
+import { Mission } from "@/types/journey/mission";
+import { UserMission } from "@/types/progress/userMission";
+import { UnityAction } from "@/types/journey/action";
 
 import { BaseEngine } from "./BaseEngine";
 import { ActionEngine } from "./ActionEngine";

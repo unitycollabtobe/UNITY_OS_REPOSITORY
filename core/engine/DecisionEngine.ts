@@ -4,27 +4,33 @@ import { DecisionRules } from "./DecisionRules";
 import { DecisionResult } from "./DecisionTypes";
 
 export class DecisionEngine {
-  evaluate(context: UnityContext): DecisionResult {
+
+  evaluate(
+    context: UnityContext
+  ): DecisionResult {
+
     if (context.profile.accountStatus !== "ACTIVE") {
-      return DecisionRules[0];
+      return DecisionRules.ACCOUNT_SETUP;
     }
 
     if (context.journey.path === "NONE") {
-      return DecisionRules[1];
+      return DecisionRules.CHOOSE_PATH;
     }
 
-    if (context.meeting.pendingMeetings === 0) {
-      return DecisionRules[2];
+    if (context.meeting.nextMeetingId === null) {
+      return DecisionRules.BOOK_MEETING;
     }
 
     if (context.upload.uploadedUtilities === 0) {
-      return DecisionRules[3];
+      return DecisionRules.UPLOAD_FIRST_UTILITY;
     }
 
     if (context.upload.pendingUtilities > 0) {
-      return DecisionRules[4];
+      return DecisionRules.WAIT_REVIEW;
     }
 
-    return DecisionRules[6];
+    return DecisionRules.OPEN_ROADMAP;
+
   }
+
 }

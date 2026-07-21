@@ -1,7 +1,7 @@
 // ===========================================
 // UNITY OS
 // Meeting Model
-// Version: 1.1
+// Version: 2.2
 // ===========================================
 
 export type MeetingType =
@@ -19,8 +19,19 @@ export type MeetingStatus =
   | "scheduled"
   | "live"
   | "completed"
-  | "cancelled"
-  | "full";
+  | "cancelled";
+
+export interface MeetingLocation {
+
+  address: string;
+
+  place?: string;
+
+  room?: string;
+
+  notes?: string;
+
+}
 
 export interface Meeting {
 
@@ -36,7 +47,9 @@ export interface Meeting {
 
   status: MeetingStatus;
 
-  speaker: string;
+  createdBy: string;
+
+  speakerIds: string[];
 
   date: string;
 
@@ -46,22 +59,8 @@ export interface Meeting {
 
   maxParticipants: number;
 
-  bookedParticipants: number;
-
-  remainingSeats: number;
-
-  locked: boolean;
-
-  address?: string;
-
-  mapsUrl?: string;
-
-  wazeUrl?: string;
+  location?: MeetingLocation;
 
   meetingUrl?: string;
-
-  createdAt: string;
-
-  updatedAt: string;
 
 }

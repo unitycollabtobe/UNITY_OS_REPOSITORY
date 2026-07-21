@@ -1,4 +1,4 @@
-import { UserMission } from "@/types/userMission";
+import { UserMission } from "@/types/progress/userMission";
 
 export const userMissions: UserMission[] = [
   {
@@ -6,5 +6,7 @@ export const userMissions: UserMission[] = [
     missionId: "MIS-001",
     progress: 0,
     completed: false,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   },
 ];

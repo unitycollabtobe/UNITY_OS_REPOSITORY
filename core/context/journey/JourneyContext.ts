@@ -6,8 +6,4 @@ export interface JourneyContext {
   currentMissionId: string;
 
   currentMilestoneId: string | null;
-
-  nextStep: string;
-
-  progress: number;
 }

@@ -6,7 +6,7 @@
 
 import { milestones } from "@/data/static/milestones";
 
-import { Milestone } from "@/types/milestone";
+import { Milestone } from "@/types/journey/milestone";
 
 export class JourneyEngine {
 

@@ -4,7 +4,7 @@
 // Version: 1.1
 // ===========================================
 
-import { UnityCompletion } from "@/types/completion";
+import { UnityCompletion } from "@/types/journey/completion";
 
 import { BaseEngine } from "./BaseEngine";
 

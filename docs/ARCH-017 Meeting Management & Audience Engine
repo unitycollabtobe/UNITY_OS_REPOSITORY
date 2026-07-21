@@ -1,0 +1,418 @@
+// ===========================================
+// UNITY OS
+// ARCH-017
+// Meeting Management & Audience Engine
+// Version: 2.0
+// ===========================================
+
+# ARCH-017
+Meeting Management & Audience Engine
+
+## Scopo
+
+Questo documento definisce le regole architetturali del sistema Meeting di Unity.
+
+È il naturale proseguimento di:
+
+- ARCH-004 Meeting Domain
+- ARCH-016 Meeting Lifecycle & Visibility Engine
+
+ARCH-017 definisce come vengono creati, gestiti, mostrati e prenotati i Meeting all'interno di Unity.
+
+Tutti i futuri modelli ed Engine relativi ai Meeting dovranno rispettare questo documento.
+
+---
+
+# PRINCIPI ARCHITETTURALI
+
+Il sistema Meeting non è un semplice calendario.
+
+È uno strumento di accompagnamento che permette ai collaboratori di organizzare incontri, formazione, presentazioni ed eventi mantenendo il pieno controllo della visibilità e della partecipazione.
+
+Il Meeting è un'entità indipendente.
+
+Le regole di accesso, le prenotazioni e le notifiche sono responsabilità di componenti dedicate.
+
+---
+
+# CREAZIONE MEETING
+
+Possono creare Meeting:
+
+- Admin
+- Relatori
+
+L'Admin può creare qualsiasi Meeting.
+
+Il Relatore può creare Meeting utilizzando le autorizzazioni assegnate dal sistema.
+
+---
+
+# MODIFICA E CANCELLAZIONE
+
+Admin
+
+- può modificare qualsiasi Meeting
+- può cancellare qualsiasi Meeting
+- può cambiare relatore
+- può riassegnare il Meeting
+
+Relatore
+
+- può modificare solamente i propri Meeting
+- può annullare solamente i propri Meeting
+
+---
+
+# RELATORI
+
+Ogni Meeting possiede uno o più relatori.
+
+Un Meeting può essere condiviso tra più relatori.
+
+Esempio:
+
+- Mauro
+- Davide
+
+In questo caso il Meeting sarà visibile ai collaboratori appartenenti alle reti di entrambi.
+
+Il relatore è un ruolo assegnato dall'Admin.
+
+Se un relatore viene rimosso, il Meeting continua ad esistere.
+
+L'Admin può assegnare uno o più nuovi relatori senza perdere lo storico.
+
+---
+
+# VISIBILITÀ
+
+Ogni Meeting può essere mostrato utilizzando una o più regole contemporaneamente.
+
+Esempi:
+
+- pubblico
+- rete del relatore
+- più reti
+- utenti specifici
+- ruoli specifici
+- Meeting privati
+
+Le regole sono combinabili.
+
+Un Meeting può quindi essere visibile contemporaneamente:
+
+- alla rete del relatore
+- ad alcuni utenti specifici
+- ad alcuni ruoli
+
+La gestione della visibilità non appartiene al modello Meeting ma al Meeting Audience Engine.
+
+---
+
+# PRENOTAZIONE
+
+La prenotazione è immediata.
+
+Non è richiesta approvazione.
+
+Il relatore può:
+
+- aggiungere manualmente partecipanti
+- prenotare collaboratori senza che questi effettuino la richiesta
+
+Il collaboratore visualizzerà automaticamente il Meeting come già prenotato.
+
+Il collaboratore mantiene sempre il diritto di annullare la propria partecipazione.
+
+---
+
+# PARTECIPAZIONE
+
+Possono partecipare:
+
+- Visitatori (Landing)
+- Collaboratori (Dashboard)
+
+La partecipazione viene gestita dal Meeting Participation Engine.
+
+La partecipazione è indipendente dalla visibilità.
+
+Un utente può:
+
+- vedere un Meeting senza essere prenotato
+- essere prenotato direttamente dal relatore
+
+---
+
+# CAPIENZA
+
+Ogni Meeting possiede un numero massimo di partecipanti.
+
+Quando tutti i posti sono occupati:
+
+- il Meeting rimane visibile
+- compare lo stato "Pieno"
+- il pulsante Prenota viene nascosto
+
+Viene mostrato un messaggio informativo che invita l'utente a controllare eventuali disponibilità future.
+
+Se un partecipante annulla:
+
+- il posto torna disponibile
+- il pulsante Prenota ricompare automaticamente
+
+Non esiste una lista d'attesa.
+
+---
+
+# MEETING ONLINE
+
+Unity non impone una piattaforma specifica.
+
+Il relatore può utilizzare qualsiasi piattaforma.
+
+Esempi:
+
+- Zoom
+- Google Meet
+- Microsoft Teams
+- Jitsi
+- Link personalizzato
+
+Il sistema salva semplicemente il collegamento utilizzato.
+
+---
+
+# MEETING IN PRESENZA
+
+Per i Meeting in presenza possono essere salvate informazioni aggiuntive:
+
+- indirizzo
+- luogo
+- nome sala
+- parcheggio
+- note
+- istruzioni
+- informazioni utili
+
+Unity potrà generare automaticamente i collegamenti per:
+
+- Google Maps
+- Waze
+
+---
+
+# MEETING PRIVATI
+
+Il relatore può creare Meeting completamente privati.
+
+Può decidere di renderli visibili ad una sola persona.
+
+Oppure ad un piccolo gruppo selezionato.
+
+---
+
+# MEETING RICORRENTI
+
+Unity supporta la pianificazione automatica.
+
+Un Meeting può essere:
+
+- singolo
+- giornaliero
+- settimanale
+- mensile
+- personalizzato
+
+La ricorrenza viene gestita da un componente dedicato.
+
+---
+
+# NOTIFICHE
+
+Unity invia notifiche automatiche quando:
+
+- il Meeting viene creato
+- viene modificata la data
+- viene modificato l'orario
+- viene modificato il luogo
+- viene annullato
+
+Inoltre Unity invia automaticamente un promemoria circa quattro ore prima dell'inizio del Meeting.
+
+---
+
+# RESPONSABILITÀ DEI COMPONENTI
+
+Meeting
+
+Descrive esclusivamente il Meeting.
+
+Meeting Audience Engine
+
+Determina chi può vedere il Meeting.
+
+Meeting Participation Engine
+
+Gestisce prenotazioni, partecipazioni e posti disponibili.
+
+Meeting Notification Engine
+
+Gestisce notifiche e promemoria.
+
+Meeting Recurrence Engine
+
+Gestisce Meeting ricorrenti.
+
+Meeting Engine
+
+Coordina tutti i componenti precedenti.
+
+---
+
+# MODELLI COLLEGATI
+
+Questo documento introduce i seguenti modelli di dominio:
+
+- Meeting
+- MeetingAudience
+- MeetingParticipation
+- MeetingRecurrence
+
+Tutti questi modelli sono indipendenti e collaborano attraverso il Meeting Engine.
+
+---
+
+# DOCUMENTI CORRELATI
+
+ARCH-004 Meeting Domain
+
+ARCH-016 Meeting Lifecycle & Visibility Engine
+
+Meeting Model
+
+Meeting Audience Model
+
+Meeting Participation Model
+
+Meeting Recurrence Model
+
+Meeting Engine
+
+Meeting Audience Engine
+
+Meeting Participation Engine
+
+Meeting Notification Engine
+
+Meeting Recurrence Engine
+# PROPRIETÀ DEL MEETING
+
+Il Meeting è una risorsa appartenente a Unity.
+
+Il Meeting non appartiene ad una rete.
+
+La rete che può visualizzare il Meeting viene determinata dinamicamente dai relatori assegnati e dalle regole definite dal Meeting Audience Engine.
+
+Questo permette di:
+
+- assegnare più relatori allo stesso Meeting;
+- condividere un Meeting tra reti differenti;
+- modificare i relatori senza perdere lo storico del Meeting;
+- mantenere il Meeting indipendente dalla struttura organizzativa.
+
+Il modello Meeting non deve contenere riferimenti diretti alla rete.
+
+Ogni regola di visibilità viene gestita esclusivamente dal Meeting Audience Engine.
+# GESTIONE CONFLITTI TRA RELATORI
+
+Unity verifica automaticamente eventuali conflitti quando un relatore viene aggiunto ad un Meeting.
+
+Un conflitto si verifica quando il relatore invitato risulta già assegnato ad un altro Meeting nello stesso intervallo temporale.
+
+Esempio:
+
+1. Mauro crea un Meeting.
+
+2. Successivamente Davide crea un nuovo Meeting.
+
+3. Davide invita Mauro come relatore.
+
+Unity rileva automaticamente che Mauro possiede già un Meeting nello stesso orario e mostra il seguente avviso:
+
+"Attenzione.
+Mauro ha già un Meeting programmato nello stesso orario.
+
+Vuoi proporre la condivisione del Meeting?"
+
+Il creatore del Meeting può decidere di inviare la richiesta di condivisione.
+
+La richiesta viene inviata a Mauro tramite una notifica ben visibile all'interno della Dashboard, nella sezione Meeting.
+
+Mauro può scegliere se:
+
+- Accettare la condivisione
+- Rifiutare la condivisione
+
+Se Mauro accetta:
+
+- il Meeting viene condiviso;
+- Mauro viene aggiunto tra i relatori del Meeting;
+- le regole di visibilità vengono unite automaticamente;
+- entrambe le reti potranno visualizzare il Meeting secondo le regole definite dal Meeting Audience Engine.
+
+Se Mauro rifiuta:
+
+- entrambi i Meeting rimangono indipendenti;
+- nessuna modifica viene applicata.
+
+Unity non blocca mai la creazione di un Meeting.
+
+La decisione finale appartiene sempre ai relatori coinvolti.
+
+La condivisione di un Meeting richiede sempre l'accettazione esplicita del relatore invitato.
+
+---
+
+# TIPOLOGIA DEL MEETING
+
+La tipologia del Meeting viene definita durante la creazione del Meeting.
+
+Ogni Meeting appartiene sempre ad una categoria precisa.
+
+Esempi:
+
+- Mini Meeting
+- Meeting Bonus
+- Formazione
+- Evento
+- Meeting Personale
+
+La tipologia rimane invariata anche nel caso di Meeting condivisi tra più relatori.
+
+La condivisione modifica esclusivamente:
+
+- i relatori assegnati;
+- la visibilità del Meeting.
+
+Non modifica la natura del Meeting.
+# EVOLUZIONI FUTURE
+
+Le seguenti componenti fanno parte dell'ecosistema Meeting di Unity:
+
+- Meeting
+- MeetingLocation
+- MeetingAudience
+- MeetingParticipation
+- MeetingRecurrence
+- MeetingNotification
+- Meeting Collaboration
+- MeetingEngine
+
+Ogni componente è indipendente e possiede una responsabilità specifica.
+
+Nuove funzionalità dovranno essere sviluppate estendendo uno di questi componenti senza modificare il dominio principale del Meeting.
+// ===========================================
+// END OF FILE
+// ===========================================

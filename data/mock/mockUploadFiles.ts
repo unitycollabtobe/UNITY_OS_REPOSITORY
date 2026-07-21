@@ -1,4 +1,4 @@
-import { UploadFile } from "@/types/upload";
+import { UploadFile } from "@/types/upload/upload";
 
 export const mockUploadFiles: UploadFile[] = [
 

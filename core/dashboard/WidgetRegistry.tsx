@@ -1,7 +1,6 @@
 import JourneyPanel from "../journey/JourneyPanel";
 import MissionCard from "../mission/MissionCard";
 import MilestoneCard from "../milestone/MilestoneCard";
-import MeetingCard from "../meeting/MeetingCard";
 import VisionCard from "../vision/VisionCard";
 
 import UploadWindow from "../features/upload/UploadWindow";
@@ -12,8 +11,6 @@ export const WidgetRegistry = {
   mission: () => <MissionCard />,
 
   milestone: () => <MilestoneCard />,
-
-  meeting: () => <MeetingCard />,
 
   vision: () => <VisionCard />,
 

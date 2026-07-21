@@ -4,7 +4,7 @@
 // Version: 2.0
 // ===========================================
 
-import { Roadmap } from "@/types/roadmap";
+import { Roadmap } from "@/types/journey/roadmap";
 
 export const mockRoadmaps: Roadmap[] = [
 

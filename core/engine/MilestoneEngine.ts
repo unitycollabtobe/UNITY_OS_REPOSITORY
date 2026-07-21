@@ -7,8 +7,8 @@
 import { milestones } from "@/data/static/milestones";
 import { userMilestones } from "@/data/static/userMilestones";
 
-import { Milestone } from "@/types/milestone";
-import { MilestoneProgress } from "@/types/milestoneProgress";
+import { Milestone } from "@/types/journey/milestone";
+import { MilestoneProgress } from "@/types/progress/milestoneProgress";
 
 export class MilestoneEngine {
 

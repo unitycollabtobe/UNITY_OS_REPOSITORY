@@ -6,8 +6,6 @@ import { journeyContext } from "./JourneyProvider";
 export default function JourneyCard() {
   const { journey, decision, recommendation } = journeyContext;
 
-  const progress = journey.progress;
-
   return (
     <Card className="space-y-6">
       <div>
@@ -24,35 +22,36 @@ export default function JourneyCard() {
         </p>
       </div>
 
-      <div>
-        <div className="mb-2 flex items-center justify-between text-sm">
-          <span className="text-gray-400">
-            Progressione
-          </span>
+      <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-4 space-y-3">
+        <div>
+          <p className="text-xs uppercase tracking-widest text-cyan-400">
+            Percorso
+          </p>
 
-          <span className="font-semibold text-cyan-400">
-            {progress}%
-          </span>
+          <p className="mt-1 text-white capitalize">
+            {journey.path}
+          </p>
         </div>
 
-        <div className="h-3 w-full overflow-hidden rounded-full bg-white/10">
-          <div
-            className="h-full rounded-full bg-cyan-400 transition-all duration-500"
-            style={{
-              width: `${progress}%`,
-            }}
-          />
+        <div>
+          <p className="text-xs uppercase tracking-widest text-cyan-400">
+            Milestone corrente
+          </p>
+
+          <p className="mt-1 text-white">
+            {journey.currentMilestoneId ?? "Da assegnare"}
+          </p>
         </div>
-      </div>
 
-      <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-4">
-        <p className="text-xs uppercase tracking-widest text-cyan-400">
-          Prossimo passo
-        </p>
+        <div>
+          <p className="text-xs uppercase tracking-widest text-cyan-400">
+            Missione corrente
+          </p>
 
-        <p className="mt-2 text-white">
-          {journey.nextStep}
-        </p>
+          <p className="mt-1 text-white">
+            {journey.currentMissionId ?? "Nessuna missione disponibile"}
+          </p>
+        </div>
       </div>
 
       <Button className="w-full">

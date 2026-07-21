@@ -1,5 +1,5 @@
 import { mockRoadmaps } from "@/data/mock/mockRoadmaps";
-import { Roadmap } from "@/types/roadmap";
+import { Roadmap } from "@/types/journey/roadmap";
 
 class RoadmapEngine {
 
@@ -16,12 +16,6 @@ class RoadmapEngine {
   getById(id: string): Roadmap | undefined {
     return mockRoadmaps.find(
       roadmap => roadmap.id === id
-    );
-  }
-
-  getActive(): Roadmap[] {
-    return mockRoadmaps.filter(
-      roadmap => roadmap.active
     );
   }
 

@@ -1,4 +1,4 @@
-import { UnityCompletion } from "@/types/completion";
+import { UnityCompletion } from "@/types/journey/completion";
 
 export const completions: UnityCompletion[] = [
   {

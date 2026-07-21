@@ -1,33 +1,29 @@
 // ===========================================
 // UNITY OS
 // Mock User Profile
-// Version: 1.0
+// Version: 2.2
 // ===========================================
 
-import { UserProfile } from "@/types/userProfile";
+import { UserProfile } from "@/types/user/userProfile";
+
+import { UserRole } from "@/types/enums/UserRole";
+import { AccountStatus } from "@/types/enums/AccountStatus";
 
 export const mockUserProfile: UserProfile = {
-
   user: {
     id: "USR-001",
+
     unityCode: "UNITY-0001",
 
     firstName: "Simone",
+
     lastName: "Adamo",
 
     email: "simone@email.it",
 
-    role: "collaborator",
+    role: UserRole.COLLABORATOR,
 
-    status: "active",
-
-    journeyMode: "identity",
-
-    phase: "learning",
-
-    roadmapStep: 1,
-
-    missionId: "MIS-001",
+    status: AccountStatus.ACTIVE,
 
     sponsorId: "UNITY-0000",
 
@@ -37,55 +33,24 @@ export const mockUserProfile: UserProfile = {
   },
 
   journey: {
+    id: "JRN-001",
 
     userId: "USR-001",
 
+    mode: "identity",
+
+    status: "in_progress",
+
+    currentPhase: "onboarding",
+
     currentMilestoneId: "MIL-001",
 
-    progress: 25,
-
-    completed: false,
+    currentMissionId: "MIS-001",
 
     startedAt: new Date(),
 
     updatedAt: new Date(),
   },
 
-  milestones: [
-
-    {
-
-      userId: "USR-001",
-
-      milestoneId: "MIL-001",
-
-      progress: 25,
-
-      completed: false,
-
-      unlocked: true,
-    }
-
-  ],
-
- missions: [
-
-  {
-
-    userId: "USR-001",
-
-    missionId: "MIS-001",
-
-    progress: 0,
-
-    completed: false,
-
-    createdAt: new Date().toISOString(),
-
-    updatedAt: new Date().toISOString(),
-
-  }
-
-]
-
+  assessment: {} as any,
 };

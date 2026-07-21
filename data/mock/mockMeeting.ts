@@ -1,10 +1,10 @@
 // ===========================================
 // UNITY OS
 // Mock Meetings
-// Version: 1.1
+// Version: 2.0
 // ===========================================
 
-import { Meeting } from "@/types/meeting";
+import { Meeting } from "@/types/meeting/meeting";
 
 export const mockMeetings: Meeting[] = [
   {
@@ -21,9 +21,11 @@ export const mockMeetings: Meeting[] = [
 
     status: "scheduled",
 
-    speaker: "Davide",
+    createdBy: "USR-DAVIDE",
 
-    date: "Sabato 18 Luglio 2026",
+    speakerIds: ["USR-DAVIDE"],
+
+    date: "2026-07-18",
 
     time: "21:00",
 
@@ -31,17 +33,7 @@ export const mockMeetings: Meeting[] = [
 
     maxParticipants: 20,
 
-    bookedParticipants: 8,
-
-    remainingSeats: 12,
-
-    locked: false,
-
     meetingUrl: "https://meeting.unity.local",
-
-    createdAt: new Date().toISOString(),
-
-    updatedAt: new Date().toISOString(),
   },
 
   {
@@ -58,9 +50,11 @@ export const mockMeetings: Meeting[] = [
 
     status: "scheduled",
 
-    speaker: "Enrico",
+    createdBy: "USR-ENRICO",
 
-    date: "Domenica 19 Luglio 2026",
+    speakerIds: ["USR-ENRICO"],
+
+    date: "2026-07-19",
 
     time: "20:30",
 
@@ -68,20 +62,8 @@ export const mockMeetings: Meeting[] = [
 
     maxParticipants: 15,
 
-    bookedParticipants: 10,
-
-    remainingSeats: 5,
-
-    locked: true,
-
-    address: "Via Luciano Lama 80, Cesena",
-
-    mapsUrl: "https://maps.google.com",
-
-    wazeUrl: "https://waze.com",
-
-    createdAt: new Date().toISOString(),
-
-    updatedAt: new Date().toISOString(),
+    location: {
+      address: "Via Luciano Lama 80, Cesena",
+    },
   },
 ];

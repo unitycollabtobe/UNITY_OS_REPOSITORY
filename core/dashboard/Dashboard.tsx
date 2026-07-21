@@ -9,13 +9,13 @@ import UploadWindow from "../features/upload/UploadWindow";
 
 import { dashboardContext } from "../journey/JourneyProvider";
 import { MeetingEngine } from "../meeting/MeetingEngine";
+
 const meetingEngine = new MeetingEngine();
+
 export default function Dashboard() {
   const { context } = dashboardContext;
 
-  const nextMeeting = meetingEngine.getAvailableMeetings().find(
-    (meeting) => !meeting.locked
-  );
+  const nextMeeting = meetingEngine.getNextMeeting();
 
   return (
     <>

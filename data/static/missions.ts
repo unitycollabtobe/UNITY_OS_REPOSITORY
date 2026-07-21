@@ -1,4 +1,4 @@
-import { Mission } from "@/types/mission";
+import { Mission } from "@/types/journey/mission";
 
 export const missions: Mission[] = [
   {
@@ -22,33 +22,22 @@ export const missions: Mission[] = [
 
     optional: false,
 
-    actionLabel: "Carica utenza",
-
-    route: "/os/upload",
-
     steps: [
       {
         id: "STEP-001",
         title: "Apri la sezione Upload",
-        completed: true,
       },
       {
         id: "STEP-002",
         title: "Inserisci la prima utenza",
-        completed: false,
       },
       {
         id: "STEP-003",
         title: "Conferma il caricamento",
-        completed: false,
       },
     ],
 
-    priority: "Alta",
-
-    estimatedTime: "5 minuti",
-
-    reward: "Prima utenza completata 🎉",
+    estimatedMinutes: 5,
   },
 
   {
@@ -72,17 +61,9 @@ export const missions: Mission[] = [
 
     optional: false,
 
-    actionLabel: "Invita",
-
-    route: "/os/invite",
-
     steps: [],
 
-    priority: "Media",
-
-    estimatedTime: "10 minuti",
-
-    reward: "Primo invito inviato",
+    estimatedMinutes: 10,
   },
 
   {
@@ -106,17 +87,9 @@ export const missions: Mission[] = [
 
     optional: false,
 
-    actionLabel: "Invia preventivo",
-
-    route: "/os/preventivi",
-
     steps: [],
 
-    priority: "Media",
-
-    estimatedTime: "15 minuti",
-
-    reward: "Preventivo inviato",
+    estimatedMinutes: 15,
   },
 
   {
@@ -140,16 +113,8 @@ export const missions: Mission[] = [
 
     optional: true,
 
-    actionLabel: "Apri Vademecum",
-
-    route: "/os/library",
-
     steps: [],
 
-    priority: "Bassa",
-
-    estimatedTime: "20 minuti",
-
-    reward: "Conoscenze iniziali acquisite",
+    estimatedMinutes: 20,
   },
 ];

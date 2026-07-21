@@ -2,32 +2,29 @@
  * ==========================================
  * UNITY OS
  * Profile Mapper
- * Version: 1.0
+ * Version: 2.0
  * ==========================================
  */
 
 import { ProfileContext } from "./ProfileContext";
 import { mockUser } from "@/data/mock/mockUser";
-import { AccountStatus, UserRole } from "@/types/enums";
 
 export class ProfileMapper {
   static toContext(): ProfileContext {
     return {
       id: mockUser.id,
 
-      unityCode: mockUser.id,
+      unityCode: mockUser.unityCode,
 
       firstName: mockUser.firstName,
 
       lastName: mockUser.lastName,
 
-      email: "",
+      email: mockUser.email,
 
-      role: UserRole.COLLABORATOR,
+      role: mockUser.role,
 
-      journey: mockUser.path.name,
-
-      accountStatus: AccountStatus.ACTIVE,
+      accountStatus: mockUser.status,
     };
   }
 }

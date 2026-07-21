@@ -13,7 +13,5 @@ export interface ProfileContext {
 
   role: UserRole;
 
-  journey: string;
-
   accountStatus: AccountStatus;
 }

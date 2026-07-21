@@ -44,45 +44,34 @@ export default function JourneyPanel() {
         </div>
       </div>
 
-      <div>
-        <div className="mb-3 flex justify-between text-sm">
-          <span className="text-gray-400">
-            Progressione
-          </span>
-
-          <span className="font-semibold text-cyan-400">
-            {journey.progress}%
-          </span>
-        </div>
-
-        <div className="h-3 overflow-hidden rounded-full bg-white/10">
-          <div
-            className="h-full rounded-full bg-cyan-400 transition-all duration-700"
-            style={{
-              width: `${journey.progress}%`,
-            }}
-          />
-        </div>
-      </div>
-
       <div className="space-y-5">
         <div>
           <p className="text-xs uppercase tracking-widest text-gray-500">
             Percorso
           </p>
 
-          <p className="mt-1 text-lg font-semibold text-white">
+          <p className="mt-1 text-lg font-semibold text-white capitalize">
             {journey.path}
           </p>
         </div>
 
         <div>
           <p className="text-xs uppercase tracking-widest text-gray-500">
-            Prossimo Passo
+            Milestone corrente
           </p>
 
           <p className="mt-1 text-lg font-semibold text-white">
-            {journey.nextStep}
+            {journey.currentMilestoneId ?? "Da assegnare"}
+          </p>
+        </div>
+
+        <div>
+          <p className="text-xs uppercase tracking-widest text-gray-500">
+            Missione corrente
+          </p>
+
+          <p className="mt-1 text-lg font-semibold text-white">
+            {journey.currentMissionId ?? "Nessuna missione disponibile"}
           </p>
         </div>
 

@@ -1,4 +1,4 @@
-import { MilestoneProgress } from "@/types/milestoneProgress";
+import { MilestoneProgress } from "@/types/progress/milestoneProgress";
 
 export const userMilestones: MilestoneProgress[] = [
 

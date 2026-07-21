@@ -6,7 +6,7 @@
 
 import { completions } from "@/data/static/completions";
 
-import { UnityCompletion } from "@/types/completion";
+import { UnityCompletion } from "@/types/journey/completion";
 
 import { BaseEngine } from "./BaseEngine";
 
