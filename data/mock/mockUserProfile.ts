@@ -68,19 +68,24 @@ export const mockUserProfile: UserProfile = {
 
   ],
 
-  missions: [
+ missions: [
 
-    {
+  {
 
-      userId: "USR-001",
+    userId: "USR-001",
 
-      missionId: "MIS-001",
+    missionId: "MIS-001",
 
-      progress: 0,
+    progress: 0,
 
-      completed: false,
-    }
+    completed: false,
 
-  ]
+    createdAt: new Date().toISOString(),
+
+    updatedAt: new Date().toISOString(),
+
+  }
+
+]
 
 };

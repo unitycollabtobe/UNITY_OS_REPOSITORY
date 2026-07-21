@@ -1,7 +1,7 @@
 // ===========================================
 // UNITY OS
 // Mission Model
-// Version: 3.1
+// Version: 4.0
 // ===========================================
 
 export type MissionType =
@@ -11,12 +11,6 @@ export type MissionType =
   | "training"
   | "library"
   | "journey";
-
-export type MissionPriority =
-  | "low"
-  | "normal"
-  | "high"
-  | "critical";
 
 export interface MissionStep {
 
@@ -50,16 +44,8 @@ export interface Mission {
 
   optional: boolean;
 
-  actionLabel: string;
-
-  route: string;
-
   steps: MissionStep[];
 
-  priority: MissionPriority;
-
-  estimatedTime: string;
-
-  rewardXP: number;
+  estimatedMinutes: number;
 
 }

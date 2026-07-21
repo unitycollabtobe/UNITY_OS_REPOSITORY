@@ -1,3 +1,9 @@
+// ===========================================
+// UNITY OS
+// Mock Roadmaps
+// Version: 2.0
+// ===========================================
+
 import { Roadmap } from "@/types/roadmap";
 
 export const mockRoadmaps: Roadmap[] = [
@@ -13,10 +19,6 @@ export const mockRoadmaps: Roadmap[] = [
     path: "standard",
 
     milestoneIds: [],
-
-    estimatedMonths: 16,
-
-    active: true,
   },
 
   {
@@ -30,10 +32,6 @@ export const mockRoadmaps: Roadmap[] = [
     path: "identity",
 
     milestoneIds: [],
-
-    estimatedMonths: 16,
-
-    active: true,
   },
 
 ];

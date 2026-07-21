@@ -1,0 +1,129 @@
+# ===========================================
+# UNITY OS
+# ARCH-013
+# Content Provider Engine
+# Version: 1.0
+# Status: APPROVED
+# ===========================================
+
+# Obiettivo
+
+Unity OS deve essere completamente indipendente
+dai contenuti di una specifica azienda.
+
+Il Journey, le Mission, le Guide AI e gli Engine
+non devono contenere logiche o informazioni
+legate a M3NET o ad altre aziende.
+
+Tutta la conoscenza deve essere fornita
+tramite un Content Provider sostituibile.
+
+---
+
+# Filosofia
+
+Unity è il motore.
+
+I contenuti sono intercambiabili.
+
+Cambiare azienda non deve richiedere
+modifiche al codice del Journey.
+
+---
+
+# Architettura
+
+Mission
+        │
+        ▼
+Guide AI
+        │
+        ▼
+Content Provider
+        │
+        ├── PDF
+        ├── Slide
+        ├── Video
+        ├── FAQ
+        ├── Procedure
+        ├── Guide
+        └── Altri contenuti
+
+Le Mission conoscono solamente la Guide AI.
+
+Le Guide AI decidono quali contenuti
+mostrare all'utente.
+
+---
+
+# Responsabilità
+
+Mission
+
+• descrive cosa deve essere fatto
+
+Guide AI
+
+• accompagnano il collaboratore
+• rispondono alle domande
+• suggeriscono il materiale corretto
+• decidono quale contenuto mostrare
+• possono adattare il supporto in base
+  al contesto della Mission
+
+Content Provider
+
+• contiene tutta la conoscenza
+• può essere sostituito
+• può appartenere ad aziende differenti
+• non modifica il Journey
+
+---
+
+# Indipendenza
+
+Unity non conosce M3NET.
+
+Unity conosce solamente
+un Content Provider.
+
+Il Content Provider può essere:
+
+• M3NET
+• Azienda X
+• Azienda Y
+• un provider personalizzato
+
+Sostituire il provider non deve richiedere
+modifiche ai tipi, agli engine
+o al Journey.
+
+---
+
+# Vantaggi
+
+• Unity rimane indipendente.
+
+• Il Journey rimane invariato.
+
+• Le Mission rimangono identiche.
+
+• Le Guide AI mantengono lo stesso ruolo.
+
+• È possibile cambiare completamente
+  azienda senza riscrivere Unity.
+
+• In futuro sarà possibile avere
+  più Content Provider differenti.
+
+---
+
+# Regola Architetturale
+
+Il codice di Unity non deve contenere
+conoscenza specifica di un'azienda.
+
+Ogni informazione operativa,
+formativa o procedurale
+deve provenire esclusivamente
+dal Content Provider.

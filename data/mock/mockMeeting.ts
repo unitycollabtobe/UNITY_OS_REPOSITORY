@@ -1,3 +1,9 @@
+// ===========================================
+// UNITY OS
+// Mock Meetings
+// Version: 1.1
+// ===========================================
+
 import { Meeting } from "@/types/meeting";
 
 export const mockMeetings: Meeting[] = [
@@ -32,6 +38,10 @@ export const mockMeetings: Meeting[] = [
     locked: false,
 
     meetingUrl: "https://meeting.unity.local",
+
+    createdAt: new Date().toISOString(),
+
+    updatedAt: new Date().toISOString(),
   },
 
   {
@@ -69,5 +79,9 @@ export const mockMeetings: Meeting[] = [
     mapsUrl: "https://maps.google.com",
 
     wazeUrl: "https://waze.com",
+
+    createdAt: new Date().toISOString(),
+
+    updatedAt: new Date().toISOString(),
   },
 ];

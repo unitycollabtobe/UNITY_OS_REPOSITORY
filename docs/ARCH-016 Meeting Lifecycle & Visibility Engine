@@ -1,0 +1,315 @@
+# ===========================================
+# ARCH-016
+# Meeting Lifecycle & Visibility Engine
+# Version: 1.0
+# Status: APPROVED
+# ===========================================
+
+## Scopo
+
+Questo documento definisce il ciclo di vita dei Meeting all'interno dell'ecosistema Unity e stabilisce le regole che determinano la loro visibilità tra Landing e Dashboard.
+
+L'obiettivo è garantire un unico sistema di gestione dei Meeting, evitando duplicazioni e mantenendo un comportamento coerente in tutta la piattaforma.
+
+---
+
+# Visione
+
+In Unity esiste un solo sistema di Meeting.
+
+Landing e Dashboard non possiedono Meeting differenti.
+
+Entrambe visualizzano lo stesso dominio Meeting applicando semplicemente regole di visibilità differenti in base allo stato dell'utente.
+
+Il Meeting Engine rappresenta quindi un servizio centrale condiviso da tutto l'ecosistema.
+
+---
+
+# Principi Fondamentali
+
+## Un solo dominio Meeting
+
+Ogni Meeting appartiene ad un unico dominio.
+
+Non esistono Meeting specifici della Landing o Meeting specifici della Dashboard.
+
+Ogni Meeting viene creato una sola volta e successivamente reso visibile agli utenti autorizzati.
+
+---
+
+## Un solo Meeting Engine
+
+L'intera gestione dei Meeting è centralizzata.
+
+Il Meeting Engine è responsabile di:
+
+- creazione dei Meeting
+- disponibilità
+- visibilità
+- ordinamento
+- gestione delle partecipazioni
+- gestione della capienza
+- applicazione dei filtri
+
+Landing e Dashboard non implementano logiche autonome.
+
+Sono semplicemente due viste differenti dello stesso sistema.
+
+---
+
+# Creazione dei Meeting
+
+I Meeting possono essere creati esclusivamente dagli utenti autorizzati.
+
+Attualmente:
+
+- Admin
+- Relatori
+
+Ogni Meeting viene registrato nel dominio Meeting e diventa immediatamente disponibile al Meeting Engine.
+
+---
+
+# Tipologie di Meeting
+
+Il sistema supporta differenti categorie di Meeting.
+
+Esempi:
+
+- Mini Meeting
+- Meeting Bonus
+- Meeting Formativo
+- Evento
+- Meeting Operativo
+
+Il tipo determina esclusivamente il comportamento del Meeting e la sua visibilità.
+
+Nuove tipologie potranno essere aggiunte senza modificare l'architettura del sistema.
+
+---
+
+# Landing
+
+La Landing rappresenta il primo punto di contatto tra un visitatore e Unity.
+
+Quando un visitatore apre un link personale, Unity identifica il collaboratore che ha condiviso il collegamento.
+
+Il link serve esclusivamente come riferimento iniziale.
+
+Non crea alcun legame definitivo.
+
+---
+
+# Il Link non crea lo Sponsor
+
+Il link personale permette di:
+
+- identificare il collaboratore di riferimento;
+- mostrare i Meeting corretti;
+- offrire un punto di contatto al visitatore.
+
+Il link NON crea alcuna relazione gerarchica.
+
+Il collaboratore associato al link rappresenta solamente un riferimento temporaneo.
+
+---
+
+# Il Codice crea lo Sponsor
+
+Lo Sponsor viene assegnato esclusivamente durante la registrazione tramite Unity Code.
+
+Nel momento in cui il nuovo collaboratore utilizza un codice valido:
+
+- viene registrato nel sistema;
+- viene assegnato definitivamente al collaboratore proprietario del codice;
+- nasce il legame permanente della rete Unity.
+
+Il codice rappresenta quindi l'unico elemento che costruisce la rete.
+
+---
+
+# Link e Codice sono indipendenti
+
+Il collaboratore che condivide il link non è obbligatoriamente lo Sponsor finale.
+
+Esempio:
+
+Mario entra tramite il link di Luigi.
+
+Successivamente Davide decide di registrarlo utilizzando il proprio codice collaboratore.
+
+In questo caso:
+
+- Luigi rimane il collaboratore che ha invitato Mario.
+- Davide diventa lo Sponsor ufficiale.
+
+La rete Unity viene determinata esclusivamente dal codice utilizzato durante la registrazione.
+
+---
+
+# Meeting visibili nella Landing
+
+La Landing visualizza esclusivamente:
+
+- Mini Meeting
+- Meeting Bonus
+
+Tutte le altre tipologie vengono automaticamente escluse.
+
+---
+
+# Relazione tra Landing e Dashboard
+
+I Meeting mostrati nella Landing appartengono allo stesso insieme di Meeting disponibili nella Dashboard.
+
+La Landing applica semplicemente un filtro sulle tipologie consentite ai visitatori.
+
+Non esistono due sistemi differenti.
+
+Esiste un solo elenco Meeting condiviso da tutta la piattaforma.
+
+---
+
+# Algoritmo di selezione dei Meeting
+
+Il Meeting Engine utilizza il seguente processo.
+
+1. Recupera tutti i Meeting disponibili.
+
+2. Filtra le tipologie consentite.
+
+3. Prioritizza i Meeting appartenenti alla rete del collaboratore di riferimento.
+
+4. Esclude automaticamente tutti i Meeting completi.
+
+5. Ordina i Meeting in presenza secondo la distanza geografica.
+
+6. Se non sono disponibili Meeting nella rete principale, propone automaticamente Meeting appartenenti ad altre reti.
+
+L'obiettivo è garantire che il visitatore trovi sempre un Meeting disponibile.
+
+---
+
+# Meeting Online
+
+Per i Meeting Online il sistema privilegia sempre quelli appartenenti alla rete del collaboratore di riferimento.
+
+Qualora nessun Meeting sia disponibile, il sistema propone automaticamente quelli appartenenti ad altre reti.
+
+---
+
+# Meeting in presenza
+
+Per i Meeting in presenza il sistema utilizza la posizione geografica esclusivamente per migliorare l'esperienza dell'utente.
+
+L'ordinamento segue la seguente priorità:
+
+1. Posizione GPS autorizzata.
+2. CAP inserito manualmente.
+3. Ordinamento standard.
+
+La geolocalizzazione non rappresenta mai un requisito obbligatorio.
+
+L'utente mantiene sempre il controllo sulla propria privacy.
+
+---
+
+# Meeting completi
+
+Quando un Meeting raggiunge il numero massimo di partecipanti viene considerato non disponibile.
+
+Il Meeting Engine:
+
+- blocca nuove prenotazioni;
+- rimuove automaticamente il Meeting dagli elenchi disponibili.
+
+Qualora un partecipante annulli la prenotazione:
+
+- il posto torna disponibile;
+- il Meeting torna automaticamente visibile agli utenti compatibili.
+
+---
+
+# Meeting Bonus
+
+Il Meeting Bonus rappresenta uno strumento di accompagnamento.
+
+Non costituisce un requisito obbligatorio per accedere a Unity.
+
+Il Collaboratore mantiene sempre la libertà di decidere se proporlo oppure no.
+
+---
+
+# Accesso a Unity
+
+L'accesso a Unity non dipende dalla partecipazione ai Meeting.
+
+L'accesso dipende esclusivamente dal possesso di un Unity Code valido.
+
+Il codice può essere consegnato da un collaboratore autorizzato in qualsiasi momento.
+
+Anche un collaboratore storico può accedere immediatamente a Unity senza partecipare ad alcun Meeting.
+
+---
+
+# Dashboard
+
+Dopo la registrazione il collaboratore accede alla Dashboard.
+
+La Dashboard utilizza lo stesso Meeting Engine della Landing.
+
+La differenza consiste esclusivamente nelle regole di visibilità.
+
+Il collaboratore visualizza tutte le tipologie di Meeting consentite dal proprio ruolo e dalla propria rete.
+
+---
+
+# Principi Architetturali
+
+Il Meeting Engine rappresenta un servizio condiviso.
+
+Landing e Dashboard non implementano logiche differenti.
+
+La Landing eredita il contesto del collaboratore che ha condiviso il link.
+
+Il link personale rappresenta un riferimento temporaneo.
+
+Lo Sponsor nasce esclusivamente tramite Unity Code.
+
+Il codice è l'unico elemento che costruisce la rete Unity.
+
+I Meeting completi vengono automaticamente esclusi.
+
+I Meeting in presenza vengono ordinati per prossimità geografica.
+
+La geolocalizzazione è sempre facoltativa.
+
+Il sistema garantisce sempre la ricerca del miglior Meeting disponibile.
+
+---
+
+# Decisioni Architetturali
+
+- Esiste un solo dominio Meeting.
+- Esiste un solo Meeting Engine.
+- Landing e Dashboard condividono lo stesso sistema.
+- Il Link non crea lo Sponsor.
+- Il Codice crea lo Sponsor.
+- Il Meeting Bonus è facoltativo.
+- I Meeting non determinano l'accesso a Unity.
+- Il codice collaboratore determina la struttura della rete.
+- I Meeting completi vengono automaticamente esclusi.
+- Se un posto torna disponibile, il Meeting viene nuovamente pubblicato.
+- Se nella rete principale non esistono Meeting disponibili, il sistema propone automaticamente quelli appartenenti ad altre reti.
+- La geolocalizzazione è sempre opzionale.
+
+---
+
+# Documenti Correlati
+
+- ARCH-002 — Meeting Engine
+- ARCH-003 — Unity Code Engine
+- ARCH-011 — Domain Model
+- ARCH-014 — Journey Engine
+
+---

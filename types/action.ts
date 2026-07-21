@@ -58,10 +58,6 @@ export interface UnityAction {
 
   type: ActionType;
 
-  status: ActionStatus;
-
-  priority: ActionPriority;
-
   order: number;
 
   estimatedMinutes: number;
@@ -70,18 +66,6 @@ export interface UnityAction {
 
   requirements: UnityActionRequirement[];
 
-  reward?: UnityActionReward;
-
   target?: string;
-
-  buttonLabel?: string;
-
-  icon?: string;
-
-  category?: string;
-
-  createdAt: string;
-
-  updatedAt: string;
 
 }

@@ -13,6 +13,16 @@ export type JourneyStatus =
   | "in_progress"
   | "completed";
 
+export type JourneyPhase =
+  | "preparation"
+  | "onboarding"
+  | "activation"
+  | "operations"
+  | "consistency"
+  | "growth"
+  | "leadership"
+  | "mentoring";
+
 export interface Journey {
 
   id: string;
@@ -23,15 +33,11 @@ export interface Journey {
 
   status: JourneyStatus;
 
-  currentStep: number;
+  currentPhase: JourneyPhase;
 
   currentMilestoneId?: string;
 
   currentMissionId?: string;
-
-  completedMissionIds: string[];
-
-  progress: number;
 
   startedAt?: Date;
 

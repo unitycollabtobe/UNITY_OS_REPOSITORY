@@ -1,7 +1,7 @@
 // ===========================================
 // UNITY OS
 // Roadmap Model
-// Version: 1.1
+// Version: 2.0
 // ===========================================
 
 export type RoadmapPath =
@@ -19,13 +19,5 @@ export interface Roadmap {
   path: RoadmapPath;
 
   milestoneIds: string[];
-
-  estimatedMonths: number;
-
-  active: boolean;
-
-  createdAt: string;
-
-  updatedAt: string;
 
 }
