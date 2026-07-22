@@ -1,6 +1,6 @@
 import MeetingCard from "./MeetingCard";
 
-import { MeetingEngine } from "./MeetingEngine";
+import { MeetingEngine } from "../engine/MeetingEngine";
 const meetingEngine = new MeetingEngine();
 
 const meetings = meetingEngine.getPublicMeetings();

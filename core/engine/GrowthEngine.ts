@@ -1,12 +1,12 @@
 // ===========================================
 // UNITY OS
 // Growth Engine
-// Version: 1.1
+// Version: 1.0
 // ===========================================
 
-import { UnityCompletion } from "@/types/journey/completion";
-
 import { BaseEngine } from "./BaseEngine";
+
+import { GrowthResult } from "@/types/journey/growth";
 
 export class GrowthEngine extends BaseEngine {
 
@@ -15,23 +15,12 @@ export class GrowthEngine extends BaseEngine {
   }
 
   /**
-   * Calcola il progresso del collaboratore.
+   * Valuta lo stato del collaboratore
+   * e determina il prossimo passo del Journey.
    */
-  calculateProgress(
-    completions: UnityCompletion[]
-  ): number {
+  evaluate(userId: string): GrowthResult {
 
-    if (completions.length === 0) {
-      return 0;
-    }
-
-    const completed = completions.filter(
-      item => item.status === "completed"
-    ).length;
-
-    return Math.round(
-      (completed / completions.length) * 100
-    );
+    throw new Error("Not implemented.");
 
   }
 

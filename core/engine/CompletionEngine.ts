@@ -1,7 +1,7 @@
 // ===========================================
 // UNITY OS
 // Completion Engine
-// Version: 1.2
+// Version: 2.0
 // ===========================================
 
 import { completions } from "@/data/static/completions";
@@ -24,11 +24,20 @@ export class CompletionEngine extends BaseEngine {
   }
 
   /**
-   * Restituisce i completamenti di un collaboratore.
+   * Restituisce tutti i completamenti di un collaboratore.
    */
   getByUser(userId: string): UnityCompletion[] {
     return completions.filter(
       item => item.userId === userId
+    );
+  }
+
+  /**
+   * Restituisce tutti i completamenti di un'azione.
+   */
+  getByAction(actionId: string): UnityCompletion[] {
+    return completions.filter(
+      item => item.actionId === actionId
     );
   }
 
@@ -42,7 +51,7 @@ export class CompletionEngine extends BaseEngine {
   }
 
   /**
-   * Verifica se un'azione è completata.
+   * Verifica se un collaboratore ha completato un'azione.
    */
   isCompleted(
     userId: string,

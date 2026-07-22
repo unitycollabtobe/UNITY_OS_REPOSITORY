@@ -8,7 +8,7 @@ import VisionCard from "../vision/VisionCard";
 import UploadWindow from "../features/upload/UploadWindow";
 
 import { dashboardContext } from "../journey/JourneyProvider";
-import { MeetingEngine } from "../meeting/MeetingEngine";
+import { MeetingEngine } from "../engine/MeetingEngine";
 
 const meetingEngine = new MeetingEngine();
 

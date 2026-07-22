@@ -4,14 +4,14 @@ export const completions: UnityCompletion[] = [
   {
     id: "CMP-001",
 
-    actionId: "ACT-001",
-
     userId: "USR-001",
+
+    actionId: "ACT-001",
 
     status: "pending",
 
-    createdAt: new Date().toISOString(),
+    createdAt: "2026-01-01T00:00:00.000Z",
 
-    updatedAt: new Date().toISOString(),
+    updatedAt: "2026-01-01T00:00:00.000Z",
   },
 ];

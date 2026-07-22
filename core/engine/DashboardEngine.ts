@@ -30,11 +30,9 @@ export class DashboardEngine extends BaseEngine {
 
     const result = await this.coreEngine.boot();
 
-    const currentMission =
-      this.missionEngine.getNextMission("USR-001");
+    const currentMission = null;
 
-    const nextAction =
-      this.actionEngine.getNextAction("USR-001");
+    const nextAction = null;
 
     return {
 

@@ -1,12 +1,12 @@
 // ===========================================
 // UNITY OS
-// Mock Roadmaps
+// Roadmaps
 // Version: 2.0
 // ===========================================
 
 import { Roadmap } from "@/types/journey/roadmap";
 
-export const mockRoadmaps: Roadmap[] = [
+export const roadmaps: Roadmap[] = [
 
   {
     id: "ROADMAP_STANDARD",

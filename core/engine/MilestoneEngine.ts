@@ -1,56 +1,58 @@
 // ===========================================
 // UNITY OS
 // Milestone Engine
-// Version: 1.1
+// Version: 2.0
 // ===========================================
 
 import { milestones } from "@/data/static/milestones";
-import { userMilestones } from "@/data/static/userMilestones";
 
 import { Milestone } from "@/types/journey/milestone";
-import { MilestoneProgress } from "@/types/progress/milestoneProgress";
 
-export class MilestoneEngine {
+import { BaseEngine } from "./BaseEngine";
 
-  getCurrentMilestone(userId: string): Milestone {
+export class MilestoneEngine extends BaseEngine {
 
-    const progress = userMilestones.find(
-      (item) =>
-        item.userId === userId &&
-        item.unlocked &&
-        !item.completed
-    );
-
-    // Nessun progresso trovato:
-    // restituisce la prima milestone del percorso.
-    if (!progress) {
-      return milestones[0];
-    }
-
-    const milestone = milestones.find(
-      (item) => item.id === progress.milestoneId
-    );
-
-    // Sicurezza: se per qualsiasi motivo
-    // la milestone non esiste,
-    // riparte dalla prima.
-    return milestone ?? milestones[0];
-
+  constructor() {
+    super();
   }
 
-  getProgress(
-    userId: string,
-    milestoneId: string
-  ): MilestoneProgress | null {
+  /**
+   * Restituisce tutte le milestone.
+   */
+  getAll(): Milestone[] {
+    return milestones;
+  }
 
-    return (
-      userMilestones.find(
-        (item) =>
-          item.userId === userId &&
-          item.milestoneId === milestoneId
-      ) ?? null
+  /**
+   * Cerca una milestone tramite ID.
+   */
+  getById(id: string): Milestone | undefined {
+    return milestones.find(
+      milestone => milestone.id === id
     );
+  }
 
+  /**
+   * Verifica se una milestone esiste.
+   */
+  has(id: string): boolean {
+    return milestones.some(
+      milestone => milestone.id === id
+    );
+  }
+
+  /**
+   * Restituisce la prima milestone.
+   */
+  getFirst(): Milestone | undefined {
+    return milestones[0];
+  }
+
+  /**
+   * Restituisce l'ultima milestone.
+   */
+  getLast(): Milestone | undefined {
+    return milestones[milestones.length - 1];
   }
 
 }
